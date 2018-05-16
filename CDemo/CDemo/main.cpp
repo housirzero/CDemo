@@ -7,7 +7,7 @@
 //
 
 #include <iostream>
-#include "array.hpp"
+#include "Array.hpp"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
