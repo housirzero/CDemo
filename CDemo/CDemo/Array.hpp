@@ -10,15 +10,20 @@
 #define Array_hpp
 
 #include <stdio.h>
+#include <assert.h>
 
 class Array
 {
 private:
     int _size;
     int * array;
+    static const int DEFAULT_SIZE = 10;
 public:
-    Array(int size):_size(size)
+    // explicit 防止隐式转换（a == b[i]）情况的出现
+    explicit Array(int size = DEFAULT_SIZE)
     {
+        assert(size > 0);
+        _size = size;
         array = new int[_size];
         if(NULL == array)
         {
@@ -32,11 +37,13 @@ public:
         array = NULL;
     }
     
-    int size();
-    int max();
-    int min();
-    int mean();
-    int mid();
+    int size() const {return _size;};
+    int max() const;
+    int min() const;
+    int mean() const;
+    int mid() const;
+    
+    void sort();
     
     Array& operator =(const Array& obj);
     Array& operator ==(const Array& obj);
